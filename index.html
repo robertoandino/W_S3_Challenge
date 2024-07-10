@@ -59,20 +59,20 @@
       // ❗ WARNING: except for `getAllReversed`, methods must respect the order of the integers
       // ❗ WARNING: note that except for push and pop, the methods don't change the `ints` property
       constructor(...nums){
-        this.arr = [...nums]; 
+        this.ints = [...nums]; 
       }
 
       getAll(){
-        return this.arr;
+        return this.ints;
       }
 
       getEvens(){
 
         const evenArr = [];
 
-        for(let i = 0; i < this.arr.length; i++){
-          if(this.arr[i] % 2 === 0){
-            evenArr.push(this.arr[i]);
+        for(let i = 0; i < this.ints.length; i++){
+          if(this.ints[i] % 2 === 0){
+            evenArr.push(this.ints[i]);
           }
         }
 
@@ -83,9 +83,9 @@
 
         const negArr = []
 
-        for(let i = 0; i < this.arr.length; i++){
-          if(this.arr[i] < 0){
-            negArr.push(this.arr[i]);
+        for(let i = 0; i < this.ints.length; i++){
+          if(this.ints[i] < 0){
+            negArr.push(this.ints[i]);
           }
         }
 
@@ -96,9 +96,9 @@
 
         const sqrArr = []
 
-        for(let i = 0; i < this.arr.length; i++){
+        for(let i = 0; i < this.ints.length; i++){
           
-          sqrArr.push(this.arr[i] ** 2);
+          sqrArr.push(this.ints[i] ** 2);
 
         }
 
@@ -108,26 +108,26 @@
 
       pop(){
         
-        const num = this.arr.pop();
+        const num = this.ints.pop();
       
-        return [num, this.arr];
+        return num;
 
       }
 
       push(num){
 
-        this.arr.push(num)
+        this.ints.push(num)
         
-        return this.arr;
+        return this.ints;
       } 
 
       getEveryNth(n){
 
         const arr2 = []
 
-        for(let i = 0; i < this.arr.length; i += n){
+        for(let i = 0; i < this.ints.length; i += n){
           
-          arr2.push(this.arr[i])
+          arr2.push(this.ints[i])
           
         }
 
@@ -137,7 +137,7 @@
 
       getAllReversed(){
 
-        return this.arr.reverse();
+        return this.ints.reverse();
         
       }
 
@@ -222,7 +222,7 @@
       // 🌟 HINT: remember about the `slice` method which strings and arrays have
       // ❗ Feel free to implement `back`, although this is not required nor graded
       constructor(str, numChars){
-        this.str = str //= str.split(' ');
+        this.str = str
         this.numChars = numChars;
       }
 
@@ -323,7 +323,7 @@
           return `${count} ants starting work!`;
         }
       }
-      
+
       feed(name){
 
         let count = 0;
@@ -341,8 +341,7 @@
         }else{
           return `${name} not found!`;
         }
-      }
-      
+      }      
 
     }
 
