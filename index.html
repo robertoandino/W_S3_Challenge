@@ -58,6 +58,88 @@
       // 🧠 Implement a `getAllReversed` method which returns the ints in reverse order
       // ❗ WARNING: except for `getAllReversed`, methods must respect the order of the integers
       // ❗ WARNING: note that except for push and pop, the methods don't change the `ints` property
+      constructor(...nums){
+        this.arr = [...nums]; 
+      }
+
+      getAll(){
+        return this.arr;
+      }
+
+      getEvens(){
+
+        const evenArr = [];
+
+        for(let i = 0; i < this.arr.length; i++){
+          if(this.arr[i] % 2 === 0){
+            evenArr.push(this.arr[i]);
+          }
+        }
+
+        return evenArr; 
+      }
+
+      getNegatives(){
+
+        const negArr = []
+
+        for(let i = 0; i < this.arr.length; i++){
+          if(this.arr[i] < 0){
+            negArr.push(this.arr[i]);
+          }
+        }
+
+        return negArr; 
+      }
+
+      getAllSquared(){
+
+        const sqrArr = []
+
+        for(let i = 0; i < this.arr.length; i++){
+          
+          sqrArr.push(this.arr[i] ** 2);
+
+        }
+
+        return sqrArr;        
+
+      }
+
+      pop(){
+        
+        const num = this.arr.pop();
+      
+        return [num, this.arr];
+
+      }
+
+      push(num){
+
+        this.arr.push(num)
+        
+        return this.arr;
+      } 
+
+      getEveryNth(n){
+
+        const arr2 = []
+
+        for(let i = 0; i < this.arr.length; i += n){
+          
+          arr2.push(this.arr[i])
+          
+        }
+
+        return arr2;
+        
+      }
+
+      getAllReversed(){
+
+        return this.arr.reverse();
+        
+      }
 
     }
 
@@ -76,6 +158,50 @@
       //      * When engaging the safety, return "Safety enabled!"
       //      * When disengaging the safety, return "Safety disabled!"
       // 🌟 HINT: instances need to keep track of their maximum capacity as well as their current capacity
+      constructor(projTotal){
+        this.safetyOn = true;
+        this.loaded = projTotal;
+        this.maxCapacity = projTotal;
+      }
+
+      shoot(){
+
+        if(this.loaded > 0 && !this.safetyOn){
+          this.loaded--;
+          return "Bang!";
+        
+        }else{
+          return "Click!";
+        }
+
+      }
+
+      reload(num){
+
+        if(num <= 0 || (typeof num !== 'number')){
+          return "Error reloading!";
+        }
+
+
+        while(this.loaded < this.maxCapacity && num != 0){
+          this.loaded += 1;
+          num--;
+        }
+
+        return `${this.loaded} projectiles left!`
+      }
+
+      toggleSafety(){
+
+        if(this.safetyOn){
+          this.safetyOn = false;
+          return "Safety disabled!"
+        }else{
+          this.safetyOn = true;
+          return "Safety enabled!"
+        }
+
+      }
 
     }
 
