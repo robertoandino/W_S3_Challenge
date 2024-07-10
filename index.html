@@ -221,6 +221,44 @@
       //    ebook.next() // returns null
       // 🌟 HINT: remember about the `slice` method which strings and arrays have
       // ❗ Feel free to implement `back`, although this is not required nor graded
+      constructor(str, numChars){
+        this.str = str //= str.split(' ');
+        this.numChars = numChars;
+      }
+
+      
+      next(){
+        
+        let str2 = "";
+
+        if(this.str.length === 0){
+          return null;
+        }
+
+        if(this.str.length < this.numChars){
+
+          for(let i = 0; i < this.str.length; i++)
+          {
+            str2 += this.str[i];
+          }
+
+          this.str = this.str.substring(this.str.length);
+
+        }else{
+
+          for(let i = 0; i < this.numChars; i++)
+          {
+            str2 += this.str[i];
+          }
+
+          this.str = this.str.substring(this.numChars);
+        }
+
+
+        return str2;
+
+      }
+
 
     }
 
@@ -256,6 +294,59 @@
       //      console.log(list) // prints ["a"]
       // 👉 HINT: if you are not feeling confident with map and filter, solve the problem with for loops,
       //      and with the piece of mind of all tests passing, refactor to use map/filter
+      constructor(...ants){
+
+        this.ants = []
+
+        for(let i = 0; i < ants.length; i++){
+
+          this.ants[i] = {name: ants[i], health: 100};
+          
+        }
+      }
+
+      //this.ants[0] = {name: '0', health: 100}
+      //this.ants[0].name or health
+
+      work(){
+        
+        const count = this.ants.length;
+
+        this.ants = this.ants.filter(ant => {
+          ant.health -= 20
+          return ant.health > 0
+        });
+
+        if(count === 0){
+          return "No ants here. Did you work them to death?";
+        }else if(this.ants.length >= 0){
+          return `${count} ants starting work!`;
+        }
+      }
+
+      //      * The method takes as its only argument the name of the particular ant(s) to feed
+      //      * When invoked, the ant(s) by the given name obtain a health increase of 15 points
+      //      * The method returns the string "Yum!" if any ants by the given name exist
+      //      * The method returns the string "<ant name> not found!" if no ants by the given name exist
+      feed(name){
+
+        let count = 0;
+
+        this.ants = this.ants.filter(ant => {
+          if(ant.name === name){
+            ant.health += 15;
+            count++;
+          }
+          return ant.health;
+        })
+
+        if(count > 0){
+          return "Yum!";
+        }else{
+          return `${name} not found!`;
+        }
+      }
+      
 
     }
 
